@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "programming-books-ontology",
+  "version": "0.1.0",
+  "description": "Ontology derived from the initial toc.jsonl inventory of bonsai/Programming-Books.",
+  "source": "data/toc.jsonl",
+  "model": {
+    "entities": [
+      {"type":"language","id":"java","label":"Java"},
+      {"type":"language","id":"javascript","label":"JavaScript"},
+      {"type":"language","id":"php","label":"PHP"},
+      {"type":"language","id":"python","label":"Python"},
+      {"type":"language","id":"typescript","label":"TypeScript"},
+      {"type":"language","id":"go","label":"Go"},
+      {"type":"book","id":"book","label":"Programming book"},
+      {"type":"part","id":"part","label":"Part"},
+      {"type":"chapter","id":"chapter","label":"Chapter"},
+      {"type":"topic","id":"topic","label":"Programming topic"}
+    ],
+    "relations": [
+      {"type":"WRITTEN_IN","from":"book","to":"language"},
+      {"type":"HAS_PART","from":"book","to":"part"},
+      {"type":"HAS_CHAPTER","from":"book","to":"chapter"},
+      {"type":"HAS_TOPIC","from":"chapter","to":"topic"},
+      {"type":"RELATED_TO","from":"topic","to":"topic"}
+    ]
+  },
+  "book_count": 23,
+  "language_count": 6,
+  "books": [
+    {"id":"java/core-java-volume-ii-advanced-10","language":"java","title":"Core Java Volume II--Advanced, 10th Edition","toc_status":"inventory_only"},
+    {"id":"java/head-first-java","language":"java","title":"Head First Java: A Brain-Friendly Guide","toc_status":"inventory_only"},
+    {"id":"java/java-cookbook-3","language":"java","title":"Java Cookbook, 3rd Edition","toc_status":"inventory_only"},
+    {"id":"java/java-in-a-nutshell-7","language":"java","title":"Java in a Nutshell, 7th Edition","toc_status":"web_verified_top_level"},
+    {"id":"java/java-in-a-nutshell-6","language":"java","title":"Java in a Nutshell, 6th Edition","toc_status":"web_verified_top_level"},
+    {"id":"java/java-in-a-nutshell-8","language":"java","title":"Java in a Nutshell, 8th Edition","toc_status":"web_verified_top_level"},
+    {"id":"javascript/eloquent-javascript-3","language":"javascript","title":"Eloquent JavaScript, 3rd Edition","toc_status":"web_verified_top_level"},
+    {"id":"javascript/definitive-guide-6","language":"javascript","title":"JavaScript: The Definitive Guide, 6th Edition","toc_status":"web_verified_top_level"},
+    {"id":"javascript/definitive-guide","language":"javascript","title":"JavaScript: The Definitive Guide","toc_status":"inventory_only"},
+    {"id":"javascript/sicp-javascript","language":"javascript","title":"Structure and Interpretation of Computer Programs: JavaScript Edition","toc_status":"web_verified_top_level"},
+    {"id":"php/beginning-php-oracle","language":"php","title":"Beginning PHP and Oracle: From Novice to Professional","toc_status":"web_verified_top_level"},
+    {"id":"php/php-mysql-web-development-5","language":"php","title":"PHP and MySQL Web Development, 5th Edition","toc_status":"web_verified_top_level"},
+    {"id":"php/programming-php-4","language":"php","title":"Programming PHP, 4th Edition","toc_status":"inventory_only"},
+    {"id":"python/automate-boring-stuff","language":"python","title":"Automate the Boring Stuff with Python","toc_status":"web_verified_top_level"},
+    {"id":"python/crash-course-2","language":"python","title":"Python Crash Course, 2nd Edition","toc_status":"web_verified_top_level"},
+    {"id":"python/introduction-machine-learning","language":"python","title":"Introduction to Machine Learning with Python","toc_status":"web_verified_top_level"},
+    {"id":"python/learning-python-5","language":"python","title":"Learning Python, 5th Edition","toc_status":"web_verified_top_level"},
+    {"id":"python/python-data-analysis","language":"python","title":"Python for Data Analysis","toc_status":"web_verified_top_level"},
+    {"id":"typescript/essential-typescript-5-3","language":"typescript","title":"Essential TypeScript 5, Third Edition","toc_status":"inventory_only"},
+    {"id":"typescript/learning-typescript","language":"typescript","title":"Learning TypeScript","toc_status":"inventory_only"},
+    {"id":"go/100-go-mistakes","language":"go","title":"100 Go Mistakes and How to Avoid Them","toc_status":"web_verified_top_level"},
+    {"id":"go/concurrency-in-go","language":"go","title":"Concurrency in Go","toc_status":"web_verified_top_level"},
+    {"id":"go/go-programming-language","language":"go","title":"The Go Programming Language","toc_status":"web_verified_top_level"}
+  ],
+  "topic_clusters": [
+    {"id":"programming-fundamentals","label":"Programming fundamentals","signals":["Values, Types, and Operators","Program Structure","Variables and Simple Data Types","Functions"]},
+    {"id":"data-structures","label":"Data structures","signals":["Arrays","Lists","Dictionaries and Structuring Data","Data Structures: Objects and Arrays","Composite Types"]},
+    {"id":"oop-and-types","label":"Object-oriented programming and type systems","signals":["Object-Oriented Programming in Java","The Java Type System","Object-Oriented PHP"]},
+    {"id":"web","label":"Web programming","signals":["JavaScript and the Browser","HTTP and Forms","Web Application Security","Web Scraping"]},
+    {"id":"databases","label":"Databases and data access","signals":["SQLite Databases","Using MySQL","Data Loading, Storage, and File Formats"]},
+    {"id":"concurrency","label":"Concurrency","signals":["Concurrency: Foundations","Concurrency: Practice","Concurrency Patterns in Go","Goroutines and Channels"]},
+    {"id":"testing-quality","label":"Testing and code quality","signals":["Testing","Debugging","Error management","Programming and Documentation Conventions"]},
+    {"id":"data-science-ml","label":"Data science and machine learning","signals":["NumPy Basics: Arrays and Vectorized Computation","Getting Started with pandas","Introduction to Machine Learning with Python"]},
+    {"id":"systems-runtime","label":"Runtime and systems","signals":["The JVM","The Go Runtime","Reflection","Packages and the Go Tool"]}
+  ],
+  "derivation_rules": [
+    "A book is linked to its repository language directory.",
+    "Part entries become part entities.",
+    "Chapter-level TOC entries become chapter entities.",
+    "Repeated semantic phrases across chapter titles form candidate topic clusters.",
+    "Inventory-only books are represented but do not contribute verified chapter/topic edges until PDF extraction is completed."
+  ]
+}
