@@ -1,11 +1,26 @@
-# Programming Books Repository
+# BOOKS
 
-Welcome to our repository of programming books in PDF format! Here you'll find a diverse collection of books, covering a wide range of programming topics.
+本リポジトリで生成・執筆する「本」を管理する領域。
 
-Our repository includes books on various programming languages, such as JavaScript, Python, Go, Java, and many more. Additionally, we have a variety of books focusing on niche subjects like hacking and cybersecurity, books suitable for children, web development, and career development for programmers.
+## Development status
 
-## Note
+| Book | Stage | Source | Next |
+|---|---|---|---|
+| Programming Principles | 🟡 Outline | 23 programming books | BQML実行 → 章構成確定 → 執筆 |
+| AI Agent Usage | 🟠 Design | Agent/AI knowledge corpus | TOC corpus → BQML → outline |
 
-Books are taken from free sources and are presented for informational purposes only. The contents of the books are the intellectual property of the author and express his views. After reading, we insist on purchasing the paper version of the publication!
+## Development flow
 
-[Our site CodersGuild.net](https://codersguild.net/)
+`SOURCE → TOC → CONCEPT → EMBEDDING → BQML → KNOWLEDGE GRAPH → OUTLINE → DRAFT → REVIEW → PUBLISH`
+
+## Directory convention
+
+Each book gets its own directory under `BOOKS/`.
+
+- `README.md` — book status and scope
+- `outline.md` — current table of contents
+- `draft/` — manuscript chapters
+- `research/` — evidence and notes
+- `review/` — review results
+
+The `bqml/` directory remains the shared analysis engine; `data/` remains the source corpus.
